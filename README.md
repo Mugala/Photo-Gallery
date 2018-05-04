@@ -1,4 +1,4 @@
-# My Photo Gallery
+# My Photo Gallery          
 
 One Paragraph of project description goes here
 

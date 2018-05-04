@@ -1,29 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
-</html>
-
-<!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
 
   {% if title %}
-  <title> My Photto Gal - {{title}}</title>
+  <title> My Photo Gallery - {{title}}</title>
   {% else %}
-    <title> Moringa Tribune </title>
+    <title> My Photo Gallery </title>
   {% endif %}
 
 </head>
 <body>
-    {% block content %} <h1>News for {{date|date:"l d-F Y"}}</h1> {%endblock%}
+    {% block content %} <h1> Pics posted on {{date|date:"l d-F Y"}}</h1> {%endblock%}
 </body>
 </html>

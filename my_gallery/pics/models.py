@@ -32,4 +32,4 @@ class Image (models.Model):
     
     #to specify model-specific options.
     class Meta:
-        ordering = ['image_name']
+        ordering = ['image_name']   

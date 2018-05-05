@@ -1,4 +1,5 @@
 from django.db import models
+import datetime as dt
 
 # Create your models here.
 
@@ -9,6 +10,9 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+    def save_category(self):
+        self.save()
+
 
 
 class Areas (models.Model):
@@ -16,6 +20,9 @@ class Areas (models.Model):
 
     def __str__(self):
         return self.name
+    
+    def save_area(self):
+        self.save()
 
 
 class Image (models.Model):
@@ -36,7 +43,23 @@ class Image (models.Model):
     def delete_image(self):
         self.delete()
 
+    def get_image_by_id(self):
+        self.objects.get(id)
+
 
     #to specify model-specific options.
     class Meta:
         ordering = ['image_name']   
+
+    @classmethod
+    def todays_pics(cls):
+        today = dt.date.today()
+        pics = cls.objects.filter(pub_date__date = today)
+        return pics
+
+    @classmethod
+    def days_pics(cls,date):
+        pics = cls.objects.filter(pub_date__date = date)
+        return pics
+
+

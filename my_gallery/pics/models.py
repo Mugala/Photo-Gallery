@@ -31,6 +31,7 @@ class Image (models.Model):
     image_location = models.ForeignKey(Areas)
     image_category = models.ForeignKey(Category)
     pub_date = models.DateTimeField(auto_now_add=True)
+    post_image = models.ImageField(upload_to = 'my-photos/', null=True)
 
     #returns a string representation of the model, useful for when we view return queries.
 

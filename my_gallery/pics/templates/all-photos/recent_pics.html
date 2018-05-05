@@ -10,15 +10,13 @@
   
     <div class="row">
       <!-- displaying Images name-->
-      <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-        <h2 class="text-center"> {{ pics_col.title }} </h2>
+      <div class="col-md-4">
+        <h2 class="text-center"> {{ pics_col.image_name }} </h2>
+        <img src="{{pics_col.post_image.url}}" class="img-responsive" alt="Image" style="width: 500px; height: 250px;">
+        <p>{{pics_col.image_description}}</p>
+        <p>{{pics_col.image_location}}</p>
+        <p>{{ pics_col.pub_date}}</p>
       </div>
-       <!--Display images posted  -->
-    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-        <img src="{{pics_col.post_image.url}}" class="img-responsive" alt="Image">
-      </div>
-  
-    </div>
   
     {% empty %}
     <div class="row">

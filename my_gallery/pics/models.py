@@ -43,8 +43,8 @@ class Image (models.Model):
     def delete_image(self):
         self.delete()
 
-    def get_image_by_id(self):
-        self.objects.get(id)
+    # def get_image_by_id(self):
+    #     self.objects.get(id)
 
 
     #to specify model-specific options.
@@ -60,6 +60,11 @@ class Image (models.Model):
     @classmethod
     def days_pics(cls,date):
         pics = cls.objects.filter(pub_date__date = date)
+        return pics
+
+    @classmethod
+    def search_by_category(cls,search_term):
+        pics = cls.objects.filter(title__icontains=search_term)
         return pics
 
 

@@ -9,9 +9,13 @@
     {% for pics_col in pics %}
   
     <div class="row">
-      <!-- displaying Images posted -->
+      <!-- displaying Images name-->
       <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
         <h2 class="text-center"> {{ pics_col.title }} </h2>
+      </div>
+       <!--Display images posted  -->
+    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+        <img src="{{pics_col.post_image.url}}" class="img-responsive" alt="Image">
       </div>
   
     </div>
@@ -25,3 +29,4 @@
   </div>
   
   {% endblock %}
+

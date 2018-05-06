@@ -5,7 +5,7 @@
 
 <div class="container">
 
-    <!-- Looping through news   -->
+    <!-- Looping through images   -->
     {% for pics_col in pics %}
   
     <div class="row">
@@ -13,9 +13,9 @@
       <div class="col-md-4">
         <h2 class="text-center"> {{ pics_col.image_name }} </h2>
         <img src="{{pics_col.post_image.url}}" class="img-responsive" alt="Image" style="width: 500px; height: 250px;">
-        <p>{{pics_col.image_description}}</p>
-        <p>{{pics_col.image_location}}</p>
-        <p>{{ pics_col.pub_date}}</p>
+        <p class="text-center">{{pics_col.image_description}}</p>
+        <p class="text-center">Location: {{pics_col.image_location}}</p>
+        <p class="text-center">Posted on: {{ pics_col.pub_date}}</p>
       </div>
   
     {% empty %}

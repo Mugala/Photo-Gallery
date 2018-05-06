@@ -4,16 +4,18 @@
 
  <div class="container">
 
+        {% for pics_col in pics %}
+
    <div class="row">
-     <img src="{{article.article_image.url}}"  class="img-responsive" alt="">
+        <img src="{{pics_col.post_image.url}}" class="img-responsive" alt="Image" style="width: 500px; height: 250px;">
    </div>
 
    <div class="row">
-     <h1 class="text-center">{{image.title}}</h1>
+     <h1 class="text-center">{{image.image_name}}</h1>
    </div>
 
    <div class="row">
-     <p>{{image.post}}</p>
+     <p>{{image.post_image}}</p>
    </div>
 
    <div class="row">

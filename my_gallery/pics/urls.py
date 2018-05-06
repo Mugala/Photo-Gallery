@@ -10,7 +10,6 @@ urlpatterns = [
     url('^today/$', views.todays_pics, name = 'todaysPics'),  #url to direct to pictures posted today.
     url(r'^archives/(\d{4}-\d{2}-\d{2})/$', views.past_pics, name = 'pastPics'),  #url to direct to pictures posted in the past.
     url(r'^search/', views.search_results, name='search_results'),
-    url(r'^image/(\d+)',views.image,name ='image')
 ]
 
 if settings.DEBUG:

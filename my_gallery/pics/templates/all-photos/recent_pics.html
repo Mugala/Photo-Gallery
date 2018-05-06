@@ -12,10 +12,17 @@
       <!-- displaying Images name-->
       <div class="col-md-4">
         <h2 class="text-center"> {{ pics_col.image_name }} </h2>
-        <img src="{{pics_col.post_image.url}}" class="img-responsive" alt="Image" style="width: 500px; height: 250px;">
+        <img id=myImg src="{{pics_col.post_image.url}}" class="img-responsive" alt="{{pics_col.image_description}},Location: {{pics_col.image_location}},Posted on: {{ pics_col.pub_date}}" style="width: 500px; height: 250px;">
         <p class="text-center">{{pics_col.image_description}}</p>
         <p class="text-center">Location: {{pics_col.image_location}}</p>
         <p class="text-center">Posted on: {{ pics_col.pub_date}}</p>
+      </div>
+
+      <!-- The Modal -->
+      <div id="myModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="img01">
+        <div id="caption"></div>
       </div>
   
     {% empty %}

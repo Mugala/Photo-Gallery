@@ -5,34 +5,50 @@ from .models import Image,Areas,Category
 
 class ImageTestClass(TestCase):
     def setUp(self):
-        self.img1 = Image(image_name = 'The moon', image_description = 'Blue in color', image_location = Areas(id), image_category = Category(id), pub_date = '2018-05-04' )
+        self.location = Areas(name = "Nairobi")
+        self.location.save()
+        self.category = Category (name = "The universe")
+        self.category.save()
+        self.img1 = Image(image_name = 'The moon', image_description = 'Blue in color', image_location = self.location, image_category = self.category, pub_date = '2018-05-06' )
+        self.img1.save_image()
+    
+    def tearDown(self):
+        Areas.objects.all().delete()
+        Category.objects.all().delete()
+        Image.objects.all().delete()
 
     def test_instance(self):
         self.assertTrue(isinstance(self.img1,Image))
 
+             # Testing Save Method
+    def test_save_method(self):
+        images = Image.objects.all()
+        self.assertTrue(len(images) > 0)
+         
+         #Test
     def test_get_pics_today(self):
         today_pics = Image.todays_pics()
-        self.assertTrue(len(today_pics)>0)
+        self.assertTrue(len(today_pics) > 0)
 
-    def test_get_pics_by_date(self):
-        test_date = '2017-03-17'
-        date = dt.datetime.strptime(test_date, '%Y-%m-%d').date()
-        pics_by_date = Image.days_pics(date)
-        self.assertTrue(len(pics_by_date) == 0)
+    def test_delete_method(self):
+        self.img1.delete_image()
+        images = Image.objects.all()
+        self.assertTrue(len(images) == 0)
 
-# class AreasTestClass(TestCase):
+    def test_update_method(self):
+        updated_rows = Image.update_image(self.img1.id, image_name = 'The sun')
+        self.assertTrue(updated_rows == 1)
 
-#     def setUp(self):
-#         # Creating a new editor and saving it
-#         self.area1= Areas(name = 'sky')
-#         self.area1.save_area()
+    def test_search_Image_category(self):
+        pic = Image.search_by_category("The universe")
+        self.assertTrue(pic.first().id == self.img1.id)
+    
+    def test_filter_Image_location(self):
+        area = Image.search_by_location("Nairobi")
+        self.assertTrue(area.first().id == self.img1.id)
+        
 
-# class CategoryTestClass(TestCase):
 
-#     def setUp(self):
-#         # Creating a new editor and saving it
-#         self.category= Category(name = 'Heavenly body')
-#         self.category.save_category()     
 
 
 
@@ -42,46 +58,9 @@ class ImageTestClass(TestCase):
 #         images = Image.objects.all()
 #         self.assertTrue(len(images) > 0)
 
-
-#         # Creating a new tag and saving it
-#         self.new_category = Category(name = 'testing')
-#         self.new_category.save()
-
-#         self.new_areas= Areas(name = 'Moringa',post = 'This is a random test Post',editor = self.james)
-#         self.new_article.save()
-
-#         self.new_article.tags.add(self.new_tag)
-
-#     def tearDown(self):
-#         Image.objects.all().delete()
-#         Areas.objects.all().delete()
-#         Category.objects.all().delete()
-    
-
-
 # first create a test for Areas and then create a test for category and then use the self.area and self.category to test for image,,,
     #  def test_save_method(self):
     #     self.james.save_editor()
     #     editors = Editor.objects.all()
     #     self.assertTrue(len(editors) > 0)
 
-# class ArticleTestClass(TestCase):
-
-#     def setUp(self):
-#         # Creating a new editor and saving it
-#         self.james= Editor(first_name = 'James', last_name ='Muriuki', email ='james@moringaschool.com')
-#         self.james.save_editor()
-
-#         # Creating a new tag and saving it
-#         self.new_tag = tags(name = 'testing')
-#         self.new_tag.save()
-
-#         self.new_article= Article(title = 'Test Article',post = 'This is a random test Post',editor = self.james)
-#         self.new_article.save()
-
-#         self.new_article.tags.add(self.new_tag)
-
-#     def tearDown(self):
-#         Image.objects.all().delete()
-#         Category.objects.all().delete()
-#         Areas.objects.all().delete()

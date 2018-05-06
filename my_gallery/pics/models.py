@@ -43,6 +43,14 @@ class Image (models.Model):
 
     def delete_image(self):
         self.delete()
+    
+    @classmethod
+    def update_image(cls, image_id, **kwargs):
+        rows = 0
+        if kwargs is not None:
+            rows = cls.objects.filter(id = image_id).update(**kwargs)
+
+        return rows
 
     # def get_image_by_id(self):
     #     self.objects.get(id)
@@ -65,11 +73,11 @@ class Image (models.Model):
 
     @classmethod
     def search_by_category(cls,search_term):
-        pics = cls.objects.filter(image_category__name__icontains=search_term,image_location__name__icontains=search_term)
+        pics = cls.objects.filter(image_category__name__icontains=search_term)
         return pics
 
     @classmethod
-    def search_by_category(cls,search_term):
+    def search_by_location(cls,search_term):
         pics = cls.objects.filter(image_location__name__icontains=search_term)
         return pics
 

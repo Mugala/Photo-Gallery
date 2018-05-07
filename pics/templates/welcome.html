@@ -13,10 +13,18 @@
     {% bootstrap_css %}
     <link rel="stylesheet" href="{% static 'css/basepics.css' %}">
  {% endblock %}
+ <style></style>
 </head>
+<style>
+    body {background-image: url(../static/image/bgimg1.jpeg);
+          background-repeat: no-repeat; background-position: center;background-size: cover; height: 100vh;
+    
+    }
+    
+    </style>
 <body>
     {% include 'navbar.html'%}
-        <h1 class="text-center">Welcome to my Photo Gallery!!!!!!!!!!!!</h1>
+        <h1>Welcome to Photo Gallery!!!</h1>
     
 </body>
 </html>
